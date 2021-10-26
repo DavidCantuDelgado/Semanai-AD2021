@@ -10,6 +10,16 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showEditView: Bool = false
+    @State var matricula: String = "A00189239"
+    @State var birthday: Date = Date()
+    @State var weight: Int = 88
+    @State var height: Double = 1.80
+    
+    var dateFormat: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MMM/dd"
+        return formatter
+    }
     
     var body: some View {
         ZStack {
@@ -32,19 +42,13 @@ struct ContentView: View {
                         VStack {
                             HStack {
                                 Text("Matricula:")
-                                Text("A00189239")
+                                Text(matricula)
                             }
                             HStack {
                                 Text("Fecha nacimiento:")
-                                Text("1968/07/19")
+                                Text("\(dateFormat.string(from: birthday))")
                             }
-                            HStack {
-                                Text("Peso:")
-                                Text("88")
-                                Text("-")
-                                Text("Altura:")
-                                Text("1.80")
-                            }
+                            Text(String(format: "Peso: %d - Altura: %.2f", weight, height))
                             
                             Button(action: {
                                 showEditView = true
@@ -81,7 +85,7 @@ struct ContentView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $showEditView) {
-            EditView()
+            EditView(matricula: $matricula, birthday: $birthday, weight: $weight, height: $height)
         }
     }
 }
