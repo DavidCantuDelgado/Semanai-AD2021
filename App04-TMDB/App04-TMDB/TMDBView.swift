@@ -14,18 +14,19 @@ struct TMDBView: View {
     
     var body: some View {
         
-            NavigationView {
-                VStack {
-                    TabView {
-                        MoviesView(mediaModel: mediaModel)
-                            .tabItem {
-                                Label("Movies", systemImage: "film.fill")
-                            }
-                        SeriesView(mediaModel: mediaModel)
-                            .tabItem {
-                                Label("Series", systemImage: "tv.fill")
-                            }
+        NavigationView {
+            VStack {
+                TabView {
+                    MoviesView(mediaModel: mediaModel)
+                        .tabItem {
+                            Label("Movies", systemImage: "film.fill")
+                        }
+                    SeriesView(mediaModel: mediaModel)
+                        .tabItem {
+                            Label("Series", systemImage: "tv.fill")
+                        }
                 }
+                .accentColor(.red)
             }
         }
     }

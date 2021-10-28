@@ -17,17 +17,35 @@ struct SeriesView: View {
                 VStack {
                     ScrollView(.horizontal, showsIndicators: false, content: {
                         HStack {
-                            ForEach(mediaModel.movies) { movie in
-                                NavigationLink(destination: MediaDetailView(media: movie)) {
+                            ForEach(mediaModel.series) { serie in
+                                NavigationLink(destination: MediaDetailView(mediaModel: mediaModel, media: serie, type: "tv")) {
                                     VStack {
-                                        KFImage(URL(string: "\(imageURL)\(movie.poster)"))
+                                        KFImage(URL(string: "\(imageURL)\(serie.poster)"))
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: geo.size.width-20)
-                                        Text(movie.title)
+                                            .cornerRadius(20)
+                                            .overlay(
+                                                ZStack {
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                        .stroke(.black, lineWidth: 10)
+                                                    VStack {
+                                                        Spacer()
+                                                        HStack {
+                                                            ScoreView(score: serie.score)
+                                                            Spacer()
+                                                        }
+                                                        .padding(.bottom,-35)
+                                                        .padding(.leading,35)
+                                                    }
+                                                }
+                                            )
+                                            .padding(.top,10)
+                                        Text(serie.title)
                                             .font(.title)
                                             .fontWeight(.bold)
-                                        Text(movie.release_date)
+                                            .padding(.top,30)
+                                        Text(serie.release_date)
                                             .font(.headline)
                                         Spacer()
                                     }
@@ -37,7 +55,7 @@ struct SeriesView: View {
                         }
                     })
                 }
-                .navigationBarTitle("Movies")
+                .navigationBarTitle("Series")
                 .navigationBarTitleDisplayMode(.inline)
             
         }

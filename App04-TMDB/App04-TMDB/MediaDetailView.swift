@@ -10,7 +10,9 @@ import Kingfisher
 
 struct MediaDetailView: View {
     
+    @ObservedObject var mediaModel: MediaModel
     var media: Media
+    var type: String
     
     var body: some View {
         GeometryReader { geo in
@@ -24,6 +26,18 @@ struct MediaDetailView: View {
                 Text(media.overview)
                     .font(.body)
                     .multilineTextAlignment(.center)
+                NavigationLink(destination: VideosListView(mediaModel: mediaModel, media: media, type: type)) {
+                    HStack {
+                        Image(systemName: "tv.and.mediabox")
+                        Text("Trailers")
+                            .font(.title2)
+                            
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(.blue)
+                    .cornerRadius(20)
+                }
                 KFImage(URL(string: "\(imageURL)\(media.poster)"))
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -38,6 +52,6 @@ struct MediaDetailView: View {
 
 struct MediaDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MediaDetailView(media: Media.dummy)
+        MediaDetailView(mediaModel: MediaModel(), media: Media.dummy, type: "movie")
     }
 }
