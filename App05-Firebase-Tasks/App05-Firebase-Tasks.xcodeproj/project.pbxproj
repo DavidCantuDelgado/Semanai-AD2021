@@ -22,6 +22,9 @@
 		32AFF6A2272B15E70046837F /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFF6A1272B15E60046837F /* TaskDetailView.swift */; };
 		32AFF6A4272B19290046837F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFF6A3272B19290046837F /* Category.swift */; };
 		32AFF6A6272B19E20046837F /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFF6A5272B19E20046837F /* Priority.swift */; };
+		32AFF6A8272B423E0046837F /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFF6A7272B423E0046837F /* CategoryView.swift */; };
+		32AFF6AA272B46900046837F /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFF6A9272B46900046837F /* PriorityView.swift */; };
+		32AFF6AC272B4A820046837F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFF6AB272B4A820046837F /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		32AFF6A1272B15E60046837F /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		32AFF6A3272B19290046837F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		32AFF6A5272B19E20046837F /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		32AFF6A7272B423E0046837F /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		32AFF6A9272B46900046837F /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
+		32AFF6AB272B4A820046837F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,9 @@
 				32AFF681272B04450046837F /* App05_Firebase_TasksApp.swift */,
 				32AFF683272B04450046837F /* TaskListView.swift */,
 				32AFF6A1272B15E60046837F /* TaskDetailView.swift */,
+				32AFF6AB272B4A820046837F /* Enums.swift */,
+				32AFF6A7272B423E0046837F /* CategoryView.swift */,
+				32AFF6A9272B46900046837F /* PriorityView.swift */,
 				32AFF685272B04470046837F /* Assets.xcassets */,
 				32AFF68F272B086A0046837F /* GoogleService-Info.plist */,
 				32AFF687272B04470046837F /* Preview Content */,
@@ -186,10 +195,13 @@
 			files = (
 				32AFF684272B04450046837F /* TaskListView.swift in Sources */,
 				32AFF69E272B0EBA0046837F /* Task.swift in Sources */,
+				32AFF6AC272B4A820046837F /* Enums.swift in Sources */,
+				32AFF6AA272B46900046837F /* PriorityView.swift in Sources */,
 				32AFF6A6272B19E20046837F /* Priority.swift in Sources */,
 				32AFF6A0272B10DA0046837F /* TaskModel.swift in Sources */,
 				32AFF682272B04450046837F /* App05_Firebase_TasksApp.swift in Sources */,
 				32AFF6A2272B15E70046837F /* TaskDetailView.swift in Sources */,
+				32AFF6A8272B423E0046837F /* CategoryView.swift in Sources */,
 				32AFF6A4272B19290046837F /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

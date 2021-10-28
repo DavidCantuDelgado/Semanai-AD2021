@@ -38,7 +38,7 @@ class TaskModel: ObservableObject {
     
     func fetchCategories() {
         
-        db.collection("Category").addSnapshotListener { (querySnapshot, error) in
+        db.collection("Category").order(by: "category_id").addSnapshotListener { (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
                     print("No documents")
                     return
@@ -52,7 +52,7 @@ class TaskModel: ObservableObject {
     
     func fetchPriorities() {
         
-        db.collection("Priority").addSnapshotListener { (querySnapshot, error) in
+        db.collection("Priority").order(by: "priority_id").addSnapshotListener { (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
                     print("No documents")
                     return
@@ -62,5 +62,38 @@ class TaskModel: ObservableObject {
                     return try? queryDocumentSnapshot.data(as: Priority.self)
                 }
             }
+    }
+    
+    // Función para agregar datos a la base de datos
+    func addTask(task: Task) {
+        do {
+            let _ = try db.collection("Tasks").addDocument(from: task)
+        }
+        catch {
+            print(error)
+        }
+    }
+
+    // Función para actualizar datos en la base de datos
+    func updateTask(task: Task) {
+        if let taskID = task.id {
+            do {
+                try db.collection("Tasks").document(taskID).setData(from: task)
+            }
+            catch {
+                print("There was an error while trying to update a task \(error.localizedDescription).")
+            }
+        }
+    }
+
+    // Función para borrar datos de la base de datos
+    func removeTask(task: Task) {
+        if let taskID = task.id {
+            db.collection("Tasks").document(taskID).delete { (error) in // (1)
+                if let error = error {
+                    print("Error removing document: \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }

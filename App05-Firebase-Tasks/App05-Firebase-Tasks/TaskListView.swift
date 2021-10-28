@@ -13,20 +13,45 @@ struct TaskListView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            ZStack {
                 List {
-                    ForEach(taskModel.priorities) { priority in
-                        VStack {
-                            Text(priority.priority)
-                            Image(systemName: priority.image)
+                    ForEach(taskModel.tasks) { task in
+                        NavigationLink(destination: TaskDetailView(taskModel: taskModel, task: task, mode: .edit)) {
+                            VStack(alignment: .leading) {
+                                Text(task.task)
+                            }
+                        }
+                    }
+                    .onDelete { indexSet in
+                        for index in indexSet {
+                            taskModel.removeTask(task: taskModel.tasks[index])
+                        }
+                    }
+                }
+                VStack {
+                    Spacer()
+                    NavigationLink(destination: TaskDetailView(taskModel: taskModel, task: Task.dummy, mode: .add)) {
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
                                 .resizable()
-                                .frame(width: 100, height: 100)
+                                .frame(width: 40, height: 40)
+                                .foregroundColor(.green)
                         }
                     }
                 }
             }
             .navigationBarTitle("Tareas")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Tareas")
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+            }
         }
     }
 }
