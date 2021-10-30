@@ -21,6 +21,7 @@ struct TaskListView: View {
                                 Text(task.task)
                             }
                         }
+                        NavigationLink(destination: <#T##() -> _#>, label: <#T##() -> _#>)
                     }
                     .onDelete { indexSet in
                         for index in indexSet {
